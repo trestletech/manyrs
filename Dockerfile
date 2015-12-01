@@ -19,3 +19,8 @@ COPY installR.sh /usr/local/bin/installR
 
 RUN for ver in $R_2; do /usr/local/bin/installR 2 $ver; done;
 RUN for ver in $R_3; do /usr/local/bin/installR 3 $ver; done;
+
+# We now have a bunch of Rs installed in /usr/local/lib
+
+RUN apt-get install -y p7zip-full
+RUN 7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=100m -ms=on allRs.7z /usr/local/lib/R-*
