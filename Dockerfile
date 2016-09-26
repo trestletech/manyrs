@@ -12,16 +12,34 @@ RUN apt-get update
 RUN apt-get build-dep -y r-base
 RUN apt-get install -y build-essential subversion ccache texlive texlive-fonts-extra texlive-latex-extra wget
 
-ENV R_2 2.15.0 2.15.1 2.15.2 2.15.3
-ENV R_3 3.0.0 3.0.1 3.0.2 3.0.3 3.1.0 3.1.1 3.1.2 3.1.3 3.2.0 3.2.1 3.2.2 3.2.3 3.2.5 3.3.0 3.3.1
-
 COPY installR.sh /usr/local/bin/installR
 
-RUN for ver in $R_2; do /usr/local/bin/installR 2 $ver; done;
-RUN for ver in $R_3; do /usr/local/bin/installR 3 $ver; done;
+# R 2.x
+RUN /usr/local/bin/installR 2 2.15.0
+RUN /usr/local/bin/installR 2 2.15.1
+RUN /usr/local/bin/installR 2 2.15.2
+RUN /usr/local/bin/installR 2 2.15.3
+
+# R 3.x
+RUN /usr/local/bin/installR 3 3.0.0
+RUN /usr/local/bin/installR 3 3.0.1
+RUN /usr/local/bin/installR 3 3.0.2
+RUN /usr/local/bin/installR 3 3.0.3
+RUN /usr/local/bin/installR 3 3.1.0
+RUN /usr/local/bin/installR 3 3.1.1
+RUN /usr/local/bin/installR 3 3.1.2
+RUN /usr/local/bin/installR 3 3.1.3
+RUN /usr/local/bin/installR 3 3.2.0
+RUN /usr/local/bin/installR 3 3.2.1
+RUN /usr/local/bin/installR 3 3.2.2
+RUN /usr/local/bin/installR 3 3.2.3
+RUN /usr/local/bin/installR 3 3.2.4
+RUN /usr/local/bin/installR 3 3.2.4-revised
+RUN /usr/local/bin/installR 3 3.2.5
+RUN /usr/local/bin/installR 3 3.3.0
+RUN /usr/local/bin/installR 3 3.3.1
 
 # We now have a bunch of Rs installed in /usr/local/lib
-
 # Create a zip of all the Rs
 RUN apt-get install -y p7zip-full
 RUN 7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=100m -ms=on allRs.7z /usr/local/lib/R-*
