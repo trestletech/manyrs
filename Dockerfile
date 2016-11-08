@@ -10,7 +10,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update
 RUN apt-get build-dep -y r-base
-RUN apt-get install -y build-essential subversion ccache texlive texlive-fonts-extra texlive-latex-extra wget
+RUN apt-get install -y build-essential subversion ccache texlive texlive-fonts-extra texlive-latex-extra wget libcurl4-nss-dev
 
 COPY installR.sh /usr/local/bin/installR
 
@@ -34,7 +34,7 @@ RUN /usr/local/bin/installR 3 3.2.1
 RUN /usr/local/bin/installR 3 3.2.2
 RUN /usr/local/bin/installR 3 3.2.3
 RUN /usr/local/bin/installR 3 3.2.4
-RUN /usr/local/bin/installR 3 3.2.4-revised
+RUN /usr/local/bin/installR 3 3.2.4-revised R-revised
 RUN /usr/local/bin/installR 3 3.2.5
 RUN /usr/local/bin/installR 3 3.3.0
 RUN /usr/local/bin/installR 3 3.3.1
