@@ -10,7 +10,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update
 RUN apt-get build-dep -y r-base
-RUN apt-get install -y build-essential subversion ccache texlive texlive-fonts-extra texlive-latex-extra wget libcurl4-nss-dev
+RUN apt-get install -y build-essential subversion ccache texlive texlive-fonts-extra texlive-latex-extra wget libcurl4-openssl-dev
 
 COPY installR.sh /usr/local/bin/installR
 
@@ -40,6 +40,7 @@ RUN /usr/local/bin/installR 3 3.3.0
 RUN /usr/local/bin/installR 3 3.3.1
 RUN /usr/local/bin/installR 3 3.3.2
 RUN /usr/local/bin/installR 3 3.4.0
+RUN /usr/local/bin/installR 3 3.4.1
 
 # We now have a bunch of Rs installed in /usr/local/lib
 # Create a zip of all the Rs
