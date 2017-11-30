@@ -41,6 +41,8 @@ RUN /usr/local/bin/installR 3 3.3.1
 RUN /usr/local/bin/installR 3 3.3.2
 RUN /usr/local/bin/installR 3 3.4.0
 RUN /usr/local/bin/installR 3 3.4.1
+RUN /usr/local/bin/installR 3 3.4.2
+RUN /usr/local/bin/installR 3 3.4.3
 
 # We now have a bunch of Rs installed in /usr/local/lib
 # Create a zip of all the Rs
